@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Car (opt) {
+            this.carName = opt.carName || 'Banz';
+            this.carColor = opt.carColor || 'black';
+            this.cc = opt.cc || '250';
+        }
+
+        function Person (options) {
+            Car.call(this, options.carOpts)
+            this.userName = options.name || 'jack';
+            this.age = options.age || 12;
+
+            this.broadcast = function () {
+                console.log(
+                    '恭喜' + this.age + '岁' + this.userName + '客户' + '喜提' + this.carColor + '色' + this.carName + this.cc +  '一辆'
+                )
+            }
+        }
+
+        let person = new Person({
+            userName: '奥特曼',
+            age: 20000,
+            carOpts: {
+                carName: 'cf',
+                carColor: 'black',
+                cc: 250,
+            }
+        })
+        person.broadcast();
+
+
+    </script>
+</body>
+</html>

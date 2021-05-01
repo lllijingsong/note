@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var n = Number(window.prompt('n ? '))
+
+        var num = 0,
+            f = 1,
+            s = 2;
+
+        for(var i = 3; i <= n; i++) {
+            num = f + s; // 3
+            f = s; // 2
+            s = num;   
+        }
+        console.log(num)
+        // 1 + 2 + 3 + 5 + 8
+    </script>
+</body>
+</html>

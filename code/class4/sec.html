@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = Number(window.prompt('请输入第一个数字')),
+            b = window.prompt('请输入符号 + - * /'),
+            c = Number(window.prompt('请输入第二数字'));
+        
+        function comput (a, b, c) {
+            switch (b) {
+                case '+':
+                    return a + c;
+                case '-':
+                    return a - c;
+                case '*':
+                    return a * c;
+                case '/':
+                    return a / c;
+                case '%':
+                    return a % c;
+                default:
+                    return '输入有误'
+            }
+        }
+        alert(comput(a, b, c))
+    </script>
+</body>
+</html>

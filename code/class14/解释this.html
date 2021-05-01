@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function Foo() {
+            getName = function () {
+                console.log(1);
+            }
+            return this;
+        }
+        Foo.getName = function () {
+            console.log(2);
+        }
+        Foo.prototype.getName = function () {
+            console.log(3);
+        }
+        var getName = function () {
+            console.log(4);
+        }
+        function getName () {
+            console.log(5);
+        }
+        /** 
+         * 预解析，
+         * GO = {
+         *      getName: undefined -> 第一步找变量， 
+         *              function () {console.log(5);} -> 置顶函数 
+         *              function () { console.log(4) } -> 正常赋值，
+         *              function () { console.log(1) }  
+         * 
+         *      Foo: function () {}
+         * 
+         * }
+         * 
+         * AO = {
+         * }
+         * 
+        */
+        Foo.getName(); // 执行静态属性，本身并没有被执行， 所以返回结果为 2；
+        
+        getName(); // 此时GO的 最后一个getName 返回 5；
+
+        Foo().getName; // 执行了Foo函数，此时改变了GO的getName值, 因为没有使用new 所以this指向window，在调用全局getName 返回 1
+
+        new Foo.getName();  // 执行Foo静态方法，返回 2
+
+        new Foo().getName();  // 执行Foo构造函数，执行实例化的getName方法，本身作用域没有这个方法， 去原型找 返回 3
+
+        new new Foo().getName(); // 这个和上面的其实差不多，返回3
+    </script>
+</body>
+</html>

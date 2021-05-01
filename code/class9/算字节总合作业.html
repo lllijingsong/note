@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        let str = window.prompt('请输入一个字符串：')
+
+        function sum (str) {
+            if (str.length !== 0) {
+                let num = 0;
+                for(var i = 0; i < str.length; i++) {
+                    // var item = str[i];
+                    num += str.charCodeAt(i) > 255 ? 2 : 1; 
+                }
+                return num;
+            } else {
+                return 0;
+            }
+        }
+        // document.write(sum(str));
+        console.log(sum(str))
+    </script>
+</body>
+</html>

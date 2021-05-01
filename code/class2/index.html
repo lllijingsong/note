@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    let week = window.prompt('输入星期')
+    let day = window.prompt('上午还是下午')
+
+    let header = '',
+        footer = '';
+
+    switch (week) {
+        case '星期一':
+            header = '吃饭'
+            break;
+        case '星期二':
+            header = '喝水'
+            break;
+        case '星期三':
+            header = '唱歌'
+            break;
+        case '星期四':
+            header = '玩游戏'
+            break;
+        case '星期五':
+            header = '上班'
+            break;
+    }
+
+    document.write(`${week} ${day}-${header}`)
+
+    </script>
+</body>
+</html>

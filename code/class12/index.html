@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        window.onload = function () {
+            init();
+            // console.log(model1(10))
+            // console.log(model2(5))
+            // console.log(model3(10))
+        };
+
+        function init() {
+            return {
+                model1,
+                model2,
+                model3
+            }
+        };
+        // 传一个值，打印这个范围内可以被 3 5 7 整除的值；
+        var model1 = (function () {
+            function test (n) {
+                for(var i = 0; i < n; i++) {
+                    if (i % 3 === 0 || i % 5 === 0 || i % 7 === 0) {
+                        console.log(i);
+                    }
+                }
+            }
+            return test;
+        })();
+
+        // 打印斐波那契数列第N位
+        var model2 = (function () {
+            // fibonacci
+            function fibonacci (n) {
+                if (n === 2) {
+                    return 2;
+                } else {
+                    var a = 1,
+                        b = 2,
+                        c = 0;
+                    for(var i = 3; i <= n; i++) { // 1 + 2 + 3 + 5 + 8 + 13
+                        c = a + b;
+                        a = b;
+                        b = c;
+                    }
+                    return c;
+                }
+            }
+            return fibonacci;
+        })();
+
+        // 打印从0到N的累计值；
+        var model3 = (function () {
+            // sum
+            function sum (n) {
+                var resolve = 0;
+                for(var i = 0; i < n; i++) {
+                    resolve += i;
+                }
+                return resolve;
+            }
+            return sum;
+        })();
+
+
+    </script>
+</body>
+</html>

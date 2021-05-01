@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function Car (options) {
+            this.carName = options.carName;
+            this.carColor = options.carColor;
+            this.displacement = options.displacement;
+        }
+
+        function Person (opt) {
+            this.userName = opt.userName;
+            this.userAge = opt.userAge;
+            this.money = opt.money;
+
+            this.select = function () {
+                this.car = new Car(opt.car);
+            }
+        }
+
+        let person1 = new Person({
+            userName: 'xxx',
+            userAge: 12,
+            money: 120,
+            car: {
+                carName: 'audo',
+                carColor: '#000',
+                displacement: '2.0t'
+            }
+        })
+        person1.select();
+        console.log(person1)
+
+    </script>
+</body>
+</html>

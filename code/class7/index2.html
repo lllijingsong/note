@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+    /** 
+     *  学生名单管理
+    */
+        ;(function () {
+            var students = ['张三', '李四', '王五麻子'];
+
+            function getStudents () {
+                console.log(students)
+                // return students;
+            }
+
+            function addStudent (studentName) {
+                var studentName = studentName || 'xxx';
+                students.push(studentName);
+                getStudents();
+            }
+
+            function delStudent (studentName) {
+                var studentName = studentName || students[students.length];
+                var ind = students.indexOf(studentName);
+                ind && (students.splice(ind, 1));
+                getStudents();
+            }
+            
+            window.control = {
+                getStudents,
+                addStudent,
+                delStudent
+            }
+        })();
+
+        control.addStudent('张飞');
+        control.delStudent('张飞');
+        control.delStudent();
+        control.getStudents()
+        
+
+    </script>
+</body>
+</html>

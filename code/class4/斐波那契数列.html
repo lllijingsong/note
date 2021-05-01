@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var n = Number(window.prompt('输入一个数字算斐波那契：'))
+
+        // function fibonacci (n) {
+        //     // 1 + 2 + 3 + 5 + 8 + 13 + 21
+        //     if (n <= 2) {
+        //         return 1;
+        //     } else {
+        //         return fibonacci(n - 1) + fibonacci(n - 2);
+        //     }
+        // }
+        // console.log(fibonacci(n))
+
+        const fibonacci1 = (n) => n <= 2 ? 1 : fibonacci1(n - 1) + fibonacci1(n - 2);
+        console.log(fibonacci1(n))
+    </script>
+</body>
+</html>

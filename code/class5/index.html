@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function test() {
+            return a;
+            a = 1;
+
+            function a() {}
+            var a = 2;
+        }
+        console.log(test()); // function a() {}
+
+        /*
+            GO = {
+                test: function test() {};
+            }
+            AO = {
+                a: undefined -> function a() {};
+            }
+        */
+
+
+
+        function test() {
+            a = 1;
+
+            function a() {}
+            var a = 2;
+            return a; // 2
+        }
+
+        console.log(test())
+
+        /*
+            GO = {
+                test: function test() {}
+            }
+
+            AO = {
+                a: undefined -> function a() {} -> 1 -> 2;
+            }
+        */
+
+
+
+        a = 1;
+
+        function test(e) {
+            function e() {}
+            arguments[0] = 2;
+            console.log(e); // 2
+            if (a) {
+                var b = 3;
+            }
+            var c;
+            a = 4;
+            var a;
+            console.log(b); // undefined
+            f = 5;
+            console.log(c); // undefined
+            console.log(a); // 4
+        }
+        var a;
+        test(1);
+
+        /*
+            GO = {
+                a: undefined -> 1
+                test: function test() {};
+                f: undefined: 5
+            }
+            AO = {
+                e: 1 -> function e() {} -> 2
+                b: undefined
+                c: undefined,
+                a: undefined -> 4
+
+            }
+        */
+    </script>
+</body>
+
+</html>

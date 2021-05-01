@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        ;(function () {
+            
+            function Computer(x, y, method) {
+                this.x = x;
+                this.y = y;
+                this.method = method;
+                this.select(method);
+            }
+
+            Computer.prototype.select = function (method) {
+                var method = method || 'plus',
+                    answer = 0;
+                switch(method) {
+                    case 'plus':
+                        answer = this.plus();
+                    break;
+                    case 'minus':
+                        answer = this.minus();
+                    break;
+                    case 'mul':
+                        answer = this.mul();
+                    break;
+                    case 'div':
+                        answer = this.div();
+                    break;
+                }
+                console.log(answer)
+            }
+
+            Computer.prototype.plus = function () {
+                return this.x + this.y
+            }
+            // Computer.prototype.plus = () => this.x + this.y;
+
+            Computer.prototype.minus = function () {
+                return this.x - this.y
+            }
+
+            Computer.prototype.mul = function () {
+                return this.x * this.y
+            }
+
+            Computer.prototype.div = function () {
+                return this.x / this.y
+            }
+
+            let d = new Computer(1, 2, 'div');
+        })();
+    </script>
+</body>
+</html>

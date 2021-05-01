@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="text/javascript">
+        function Computed() {
+            this.arr = arguments[0];
+            console.log(this.arr);
+
+            this.sum = function () {
+                var answer = 1;
+                for(var i = 0; i < this.arr.length; i++) {
+                    var item = this.arr[i];
+                    answer += item;
+                }
+                return answer;
+            }
+            this.factorial = function () {
+                var answer = 1;
+                for(var i = 0; i < this.arr.length; i++) {
+                    var item = this.arr[i];
+                    answer *= item;
+                }
+                return answer;
+            }
+        }
+
+        var val = new Computed([1, 2, 3, 4, 5, 6, 7, 8]);
+        console.log(val.factorial());
+        console.log(val.sum());
+    </script>
+</body>
+</html>
