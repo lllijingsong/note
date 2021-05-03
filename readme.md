@@ -1445,7 +1445,7 @@ typeof 可以打印出多少结果
     @params (添加的数据)
     
     let a = [1, 2, 3]; 
-    a.splice(2, 0) // return [3]  删除
+    a.splice(2, 1) // return [3]  删除
     // [1, 2]
     
     如果要追加到2的后面，就索引最后一个值加1；
@@ -1532,3 +1532,40 @@ typeof 可以打印出多少结果
     let str = "1,2,3";
     str.split(',', 1) // ["1"]
     join 就像 split 的克星，或者说他们相互克制，一个把数组转化成特定的字符串， 一个把特定字符串转化成数组;
+
+## 类数组
+    一般出现在function 的 arguments中。 是一个对象，但是这个对象有着数组一样的结构，有length属性，有私有的方法;
+    类数组的原型指向的是Object，也就是说像push，unshift, splice等数组的方法都无法使用(可以自定义);
+    也可以自己写一个类数组：
+    var obj = {
+        0: 1,
+        1: 2,
+        2: 3,
+        3: 4,
+        4: 5,
+        length: 5, // 因为对象默认是不会生成length属性的所以要自己加；
+        splice: Array.prototype.splice // 继承该属性以后对象变成类数组了;
+        // 此时该对象的 __proto__ 还是指向Object;
+    }
+    // 如果想使用push方法，直接在obj中加入 push: Array.prototype.push;
+
+    阿里真题
+    var obj1 = {
+        '2': 3,
+        '3': 4,
+        'length': 2,
+        'splice': Array.prototype.splice,
+        'push': Array.prototype.push
+    }
+
+    obj1.push(1);
+    obj1.push(2);
+
+    console.log(obj1);
+    // [empty × 2, 1, 2, splice: ƒ, push: ƒ]
+    // 因为是从
+    
+    // Array.prototype.push = function (elem) {
+    //     this[this.length] = elem;
+    //     this.length ++;
+    // }

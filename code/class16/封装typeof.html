@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // typeof function undefined object string boolean number
+        function cloneType (any) {
+            var toStr = Object.prototype.toString;
+            var types = {
+                "[object Array]": 'array',
+                "[object Object]": 'object',
+                "[object Number]": 'number',
+                "[object String]": 'string',
+                "[object Boolean]": 'boolean',
+            }
+            if (any === null) {
+                return 'null';
+            } else if (typeof(any) === 'object') {
+                return types[toStr.call(any)]
+            } else {
+                return typeof(any);
+            }
+        }
+
+        console.log(cloneType(1));
+        console.log(cloneType('1'));
+        console.log(cloneType(true));
+        console.log(cloneType(Number(1)));
+        
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1, 1, 2, 2, 3, 3, 4, 5, 6, 3, 6, 'a', 'a'];
+
+        Array.prototype.unique = function () {
+            var obj = {};
+            var newArr = [];
+            arr.forEach(v => {
+                if (obj[v]) {
+                    obj[v] += 1;
+                } else {
+                    obj[v] = 1;
+                    newArr.push(v);
+                }   
+            })
+            return newArr;
+        }
+
+        
+    </script>
+</body>
+</html>
