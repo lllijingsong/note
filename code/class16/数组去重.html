@@ -13,7 +13,7 @@
         Array.prototype.unique = function () {
             var obj = {};
             var newArr = [];
-            arr.forEach(v => {
+            this.forEach(v => {
                 if (obj[v]) {
                     obj[v] += 1;
                 } else {

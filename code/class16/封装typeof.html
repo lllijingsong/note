@@ -10,6 +10,7 @@
     <script>
         // typeof function undefined object string boolean number
         function cloneType (any) {
+            var type = typeof(any);
             var toStr = Object.prototype.toString;
             var types = {
                 "[object Array]": 'array',
@@ -20,10 +21,11 @@
             }
             if (any === null) {
                 return 'null';
-            } else if (typeof(any) === 'object') {
-                return types[toStr.call(any)]
+            } else if (type === 'object') {
+                var ret = toStr.call(any);
+                return types[ret]
             } else {
-                return typeof(any);
+                return type;
             }
         }
 

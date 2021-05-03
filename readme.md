@@ -1386,7 +1386,10 @@ typeof 可以打印出多少结果
     // 所有数组都继承于Array.prototype
     let arr = [1, 2, ,,, ] // 稀松数组
     let arr1 = new Array(2) // [empty x2] 如果只给了一个参数就生成几个empty, 小数报错， 字符串直接生成数组；
-
+    var test = [, 1, 2]; // test[0] // undefined  数组可以出现empty空值, 访问会返回undefined
+    在数组内部前面加，是算一个item的， 但是在后面加就不算了
+    let a = [, 1, 2]; // length 3
+    let a = [1, 2];   // length 2
 ### Array index
     JavaScript arrays are zero-indexed. The first element of an array is at index 0 , and the last element
     is at the index value equal to the value of the array's length property minus 1 .
@@ -1548,6 +1551,8 @@ typeof 可以打印出多少结果
         // 此时该对象的 __proto__ 还是指向Object;
     }
     // 如果想使用push方法，直接在obj中加入 push: Array.prototype.push;
+    变成类数组，首先原型或者本身要有数组的splice方法，其次必须有length属性；
+    优点: 可以使用数组的方法访问，也可以使用对象的方法访问 obj[0], obj[name];
 
     阿里真题
     var obj1 = {
@@ -1569,3 +1574,26 @@ typeof 可以打印出多少结果
     //     this[this.length] = elem;
     //     this.length ++;
     // }
+
+    用 for in 循环; 因为原型上没有数组的方法;
+
+### 封装一个typeof
+    function cloneType (any) {
+        var type = typeof(any);
+        var toStr = Object.prototype.toString;
+        var types = {
+            "[object Array]": 'array',
+            "[object Object]": 'object',
+            "[object Number]": 'number',
+            "[object String]": 'string',
+            "[object Boolean]": 'boolean',
+        }
+        if (any === null) {
+            return 'null';
+        } else if (type === 'object') {
+            var ret = toStr.call(any);
+            return types[ret]
+        } else {
+            return type;
+        }
+    }
