@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul class="nav">
+        <li>导航1</li>
+        <li>导航2</li>
+        <li>导航1</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+        <li>导航2</li>
+
+        <button onclick="scroll_To(0)">滚动到顶部</button>
+        <button onclick="scroll_To(1300)">滚动到下面</button>
+    </ul>
+
+    <script>
+        //滚动条函数封装
+        function scroll_To(tar_y) { //tar_y 即滑动条顶端 距离页面最上面的距离
+            //console.log('oooooooo')
+            var timer = setTimeout(function () {
+                var current_y = document.body.scrollTop
+                //console.log(current_y)
+                step = 40 //步长系数 即剩余的距离除以40 每1ms 移动一段距离
+                if (tar_y > current_y) { //tar_y > current_y 即向下滚动
+                    var dist = Math.ceil((tar_y - current_y) / step)
+                    var next_y = current_y + dist
+                    if (next_y < tar_y) { //向上滚动和向下滚动判定的区别 是这里！！
+                        window.scrollTo(0, next_y)
+                        scroll_To(tar_y)
+                        console.log('向下')
+                    } else {
+                        window.scrollTo(0, tar_y)
+                        //clearTimeout(timer)
+                    }
+                } else { //tar_y < current_y 即向上滚动
+                    var dist = Math.floor((tar_y - current_y) / step)
+                    var next_y = current_y + dist
+                    if (next_y > tar_y) {
+                        window.scrollTo(0, next_y)
+                        scroll_To(tar_y)
+                        console.log('向上')
+                    } else {
+                        window.scrollTo(0, tar_y)
+                        //clearInterval(timer)
+                    }
+                }
+            }, 1)
+        }
+    </script>
+
+</body>
+
+</html>

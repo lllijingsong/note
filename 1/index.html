@@ -1,16 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <a href="tel: 18397215009">tel</a>
-    <a href="mailto: 873148577@qq.com">email</a>
-    <script>
-        
+    <script>    
+        // let vm = new Vue({
+        //     data() {
+        //         return {
+        //             a: 1,
+        //             b: 2
+        //         }
+        //     }
+        // })
+
+        // function Vue (options) {
+        //     const _data = options.data();
+        //     const _this = this;
+
+        //     for(let k in _data) {
+        //         (function (k) {
+        //             Object.defineProperty(_this, k, {
+        //                 get() {
+        //                     console.log('log:' + k + '  ' + _data[k])
+        //                     return _data[k];
+        //                 },
+        //                 set(newObj) {
+        //                     console.log('change:', newObj);
+        //                     _data[k] = newObj;
+        //                     console.log(newObj);
+        //                 }
+        //             })
+        //         })(k)
+        //     }
+        // }
+        // console.log(vm)
+        // Vue.prototype.init = function () {
+        //     // const _data = options.data();
+        //     // const _this = this;
+
+        //     // for(let k in _data) {
+        //     //     (function (k) {
+        //     //         Object.defineProperty(_this, k, {
+        //     //             get() {
+        //     //                 return _data[k];
+        //     //             },
+        //     //             set(newObj) {
+        //     //                 console.log(newObj);
+        //     //             }
+        //     //         })
+        //     //     })(k)
+        //     // }
+        // }
+
+        let obj = {
+            name: '123',
+            age: 321,
+            job: 'car',
+            arr: [1, 2, 3],
+            a: {
+                c: [3, 2, 1]
+            }
+        }
+
+        function deepClone (origin, target) {
+            let tar = target || new origin.constructor(),
+                toStr = Object.prototype.toString,
+                arrType = '[object Array]' 
+
+            if (typeof (origin) === 'object' && origin !== null) {
+                for(let k in origin) {
+                    if (origin.hasOwnProperty(k)) {
+                        if (typeof(origin[k]) === 'object' && origin[k] !== null) {
+                            tar[k] = toStr.call(origin[k]) === arrType ? [] : {};
+                            deepClone(origin[k], tar[k]);
+                        } else {
+                            tar[k] = origin[k];
+                        }
+                    }
+                }
+            }
+            return tar;
+        }
+
+        let obj2 = deepClone(obj)
+
+        obj2.arr.push(4);
+        console.log(obj === obj2);
+        console.log(obj2, obj);
+
+
     </script>
 </body>
+
 </html>

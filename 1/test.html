@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+
+        .box .arrows {
+            position: absolute;
+            top: 50%;
+            right: 50%;
+            width: 1px;
+            height: 100px;
+            background-color: #000;
+        }
+
+        .box .arrows::before {
+            content: '';
+            width: 1px;
+            height: 10px;
+            position: absolute;
+            background-color: #000;
+            transform: rotate(45deg);
+        }
+
+        .box .arrows::after {
+            content: '';
+            width: 1px;
+            height: 10px;
+            position: absolute;
+            background-color: #000;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+        <div class="arrows">
+
+        </div>
+
+    </div>
+    <script>
+        // Object.prototype.num = 123
+
+        // // let a = {
+        // //     name: 123,
+        // //     age: 456
+        // // }
+
+        // // let c = {}
+
+        // // for(const k in a) {
+        // //     c[k] = a[k]
+        // // }Reflect.has
+
+        // // console.log(c)
+
+
+        // let a = {
+        //     name: 'ljs',
+        //     age: 18,
+        //     obj1: {
+        //         name: 'sjl',
+        //         age: 20,
+        //         arr1: [ 1, 2, 3, 4]
+        //     }
+        // }
+
+        // function deepClone (origin, target) {
+        //     let tar = target || {};
+        //     let toStr = Object.prototype.toString;
+        //     let arrType = '[object Array]';
+
+        //     for(const k in origin) {
+        //         if (origin.hasOwnProperty(k)) {
+        //         // if (Reflect.has(origin, k)) {
+        //             if (typeof(origin[k]) === 'object' && origin[k] !== null) {
+        //                 tar[k] = Array.isArray(origin[k]) ? [] : {};
+        //                 deepClone(origin[k], tar[k])
+        //             } else {
+        //                 tar[k] = origin[k]
+        //             }
+        //         }
+        //     }
+        //     return tar
+        // }
+
+        // let b = deepClone(a)
+        // b['name'] = 'zzz'
+        // console.log(a, b)
+
+        /**
+         * @param position { number } this node position now
+         * @param num { number }
+         */
+        // console.log(getPonitPosition(1, 22))
+
+        // function getPonitPosition(position, num) {
+        //     const sum = position + num
+        //     if (sum <= 7) {
+        //         return sum
+        //     } else if (sum >= 8 && sum <= 14) {
+        //         let arr = [8, 9, 10, 11, 12, 13, 14]
+        //         return arr.length - arr.lastIndexOf(sum) + 7
+
+        //     } else if (sum >= 15 && sum <= 21) {
+        //         return sum
+        //     } else if (sum >= 22 && sum <= 28) {
+        //         let arr = [ 22, 23, 24, 25, 26, 27, 28]
+        //         return arr.length - arr.lastIndexOf(sum) + 3 * 7
+        //     } else if (sum >= 29 && sum <= 35) {
+        //         return sum
+        //     } else if (sum >= 36 && sum <= 42) {
+        //         let arr = [ 36, 37, 38, 39, 40, 41, 42]
+        //         return arr.length - arr.lastIndexOf(sum) + 4 * 7
+        //     } else {
+        //         return sum
+        //     }
+        // }
+
+
+        // [1, 2, 3, 4, 5, 6, 7, 14, 13, 12, 11, 10, 9, 8, 15, 16, 17, 18, 19, 20, 21, 28, 27, 26, 25, 24, 23, 22, 29, 30, 31, 32, 33, 34, 35, 42, 41, 40, 39, 38, 37, 36, 43, 44, 45, 46, 47, 48, 49]
+
+        //     let index = 0
+        //     for(let i = 1; i <= 49; i++) {
+        //         console.log(i + index, 'i')
+        //         if (i % 7 === 0) {
+        //             index = 6
+        //         } else {
+        //             index = index === 0 ? 0 : index - 2
+        //         }
+        //         // console.log(index, 'index')
+        //     }
+
+        // function a () {
+        //     console.log(213)
+        //     console.log(Array.prototype.slice.call(arguments))
+        // }
+        // a(1, 2, 3)
+
+
+        // function test() {
+        //     let flag = true,
+        //         resolves = [],
+        //         arr = [],
+        //         min = 0,
+        //         max = 0;
+        //     for(let i = 1; i <= 49; i++) {
+        //         if (max - min === 7) {
+        //             flag = !flag
+        //             resolves.push(...arr.sort((a, b) => b - a));
+        //             arr = [];
+        //             min = max;
+        //         }
+        //         if (flag) {
+        //             resolves.push(i);
+        //         } else {
+        //             arr.push(i);
+        //         }
+        //         max = i;
+        //     }
+        //     return resolves;
+        // }
+        // console.log(test())
+
+        // let i = 0
+        // while (i < 5) {
+        //     console.log(i);
+        //     i++
+        //     if (i === 2) {
+        //         break;
+        //     }
+        // }
+
+        // var num = 789;
+
+        // var a = num % 10;
+
+        // var b = (num - a) % 100 / 10;
+
+        // var c = (num - a - b * 10) / 100;
+
+        // num = '' + a + b + c;
+        // console.log(num)
+
+
+
+        // var a = 1, b = 2, c = 3;
+
+        // if (a > b) {
+        //     if (a > c) {
+        //         console.log(a)
+        //     } else {
+        //         console.log(c);
+        //     }
+        // } else {
+        //     if (b > c) {
+        //         console.log(b);
+        //     } else {
+        //         console.log(c)
+        //     }
+        // }
+
+
+
+        // var num = 0;
+        // for(let i = 2; i < 100; i++) {
+        //     for(let j = 1; j <= i; j++) {
+        //         if (i % j === 0) {
+        //             num++
+        //         }
+        //     }
+
+        //     if(num === 2) {
+        //         // console.log(i)
+        //     }
+        //     num = 0;
+        // }
+
+
+
+
+        // let arr = [1, 2, 3, 4];
+
+        // let a1 = Object.keys(arr);
+        // let b2 = Object.values(arr);
+
+        // // console.log(a1, b2) Array
+
+        // 引用类型 
+
+        // console.log(a1 === b2)
+
+
+        // function fbiic (n) {
+        //     if (n === 1) {
+        //         return 1;
+        //     }
+        //     return n * fbiic(n - 1);
+        // }
+        // console.log(fbiic (5))
+
+        // fbiic (5) = 5 * fbiic (4)
+        // fbiic (4) = 4 * fbiic (3)
+        // fbiic (3) = 3 * fbiic (2)
+        // fbiic (2) = 2 * fbiic (1)
+        // --
+        // 120
+        // fbiic (5) = 5 * 24
+        // fbiic (4) = 4 * 6
+        // fbiic (3) = 3 * 2
+        // fbiic (2) = 2 * 1
+
+
+
+        // function fub (n) {
+        //     if (n <= 2) return 1
+        //     return fub(n - 1) + fub(n - 2);
+        // }
+        // console.log(fub(6))
+
+        // fub(6) = fub(5) + fub(4);
+        // fub(5) = 
+
+        // function test(a) {
+        //     console.log(a);
+        //     var a = function() {}
+        // }
+
+
+        // a = 1;
+        // function test () {
+        //     console.log(a);
+        //     a = 2;
+        //     console.log(a);
+        //     var a = 3;
+        //     console.log(a);
+        // }
+        // test();
+        // var a;
+
+        // /**
+        // GO = {
+        //     a: undefined -> 1;
+        //     function test() {}
+        // }
+
+        // AO = {
+        //     a: undefined -> 2 -> 3
+        // }
+        // */
+
+
+        // function a () {
+        //     function b () {
+        //         function c () {
+
+        //         }
+        //         c();
+        //     }
+        //     b();
+        // }
+        // a();
+
+        function test() {
+            console.log(123)
+        }(1)
+
+        console.log(test)
+
+
+    </script>
+</body>
+
+</html>

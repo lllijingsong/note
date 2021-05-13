@@ -199,6 +199,7 @@
     Not a Number
     NaN是一个数值类型(number); 但是他是一个非数， NaN === NaN // false
     NaN 不等于自己; 
+    isNaN() // 判断是不是nan
 
 ##### % 取模 取余
     5 % 2 = 1;
@@ -274,7 +275,7 @@
     -- 创建 i 变量
     -- 判断 i 是否 小于 10;
     -- i < 10 
-    -- 通过， 执行 console.log(i); 执行判断里卖的代码;
+    -- 通过， 执行 console.log(i); 执行判断里面的代码;
     -- i++
     -- 在判断 i 是否小于 10;
     .......
@@ -894,6 +895,15 @@
     
     a函数执行完毕后，会回到初始值，并删除自身的AO, 但是因为a函数内部的aa函数被返回到全局，所以aa函数会把a函数的AO一并带出走，所以即使a函数
     回到初始值了， aa函数还是会带着a函数的AO;
+    
+    function init() { 
+      var name = 'Mozilla'; // name is a local variable created by init 
+      function displayName() { // displayName() is the inner function, a closure 
+        alert(name); // use variable declared in the parent function 
+      } 
+      displayName(); 
+    } 
+    init(); // 也属于闭包
 
 ### 立即执行函数
     // 初始化函数;
@@ -1486,7 +1496,7 @@ typeof 可以打印出多少结果
         }
     })
     用的就是冒泡排序
-
+    
     也可以使用sort 给数组做无序排列;
     let arr1 = [1, 2, 3, 4, 5, 6];
     arr1.sort((a, b) => {
@@ -1536,7 +1546,7 @@ typeof 可以打印出多少结果
     str.split(',', 1) // ["1"]
     join 就像 split 的克星，或者说他们相互克制，一个把数组转化成特定的字符串， 一个把特定字符串转化成数组;
 
-## 类数组
+## 类数组 Array-like
     一般出现在function 的 arguments中。 是一个对象，但是这个对象有着数组一样的结构，有length属性，有私有的方法;
     类数组的原型指向的是Object，也就是说像push，unshift, splice等数组的方法都无法使用(可以自定义);
     也可以自己写一个类数组：
@@ -1553,7 +1563,7 @@ typeof 可以打印出多少结果
     // 如果想使用push方法，直接在obj中加入 push: Array.prototype.push;
     变成类数组，首先原型或者本身要有数组的splice方法，其次必须有length属性；
     优点: 可以使用数组的方法访问，也可以使用对象的方法访问 obj[0], obj[name];
-
+    
     阿里真题
     var obj1 = {
         '2': 3,
@@ -1562,10 +1572,10 @@ typeof 可以打印出多少结果
         'splice': Array.prototype.splice,
         'push': Array.prototype.push
     }
-
+    
     obj1.push(1);
     obj1.push(2);
-
+    
     console.log(obj1);
     // [empty × 2, 1, 2, splice: ƒ, push: ƒ]
     // 因为是从
@@ -1574,7 +1584,7 @@ typeof 可以打印出多少结果
     //     this[this.length] = elem;
     //     this.length ++;
     // }
-
+    
     用 for in 循环; 因为原型上没有数组的方法;
 
 ### 封装一个typeof
@@ -1603,3 +1613,16 @@ typeof 可以打印出多少结果
 ### 错误信息类型
 
 #### SyntaxError 语法错误
+
+
+## try catch finally
+
+## 严格模式
+    IE9一下 包含IE9 是不支持严格模式的;
+    es5 分为 正常模式 和 严格模式
+    
+    在脚本上最上面写一个'use strict'; 开启严格模式；
+    但是在公司里，建议写在函数里的最顶层，不建议写在全局的最顶层; 容易出问题;
+    
+    为啥用字符串表示呢？
+    因为字符串不会报错，用其他的容易报错；
