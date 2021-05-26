@@ -1,0 +1,39 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Documents</title>
+	</head>
+	<body>
+		<div class="div-cover">
+			<h1>i'm title</h1>
+			<p>any content</p>
+			<span>footer</span>
+		</div>
+		<script type="text/javascript">
+			
+			var div = document.getElementsByTagName('div')[0];
+			HTMLElement.prototype.elemChildren = function (n) {
+				var children = [],
+					child = this.childNodes,
+					_len = child.length,
+					n = n + 1 || 0;
+
+				for(var i = 0; i < _len; i++) {
+					if (child[i].nodeType === 1) {
+						children.push(child[i]);
+					}
+				}
+
+				if (n) {
+					n - 1;
+					return children.splice(n, 1);
+				} else {
+					return children;
+				}
+			}
+
+			console.log(div.elemChildren(3))
+		</script>
+	</body>
+</html>

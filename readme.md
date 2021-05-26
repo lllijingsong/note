@@ -1070,7 +1070,7 @@
     对象的原型，里也有他的原型；
     沿着__proto__ 一直往上继承的链，叫做原型链；
     
-    原型链的顶端 是object.prototype ！！！
+    原型链的顶端 是object.prototype ！！！一定要较真就是null
     
     function Boss () {
     }
@@ -1165,13 +1165,29 @@
     obj1.num = 123;
     var obj2 = Object.create(obj1); // 继承了obj1的属性， 可以隐式调用；
     console.log(obj2)
+    
+    第二个参数:
+    let a = Object.create(null, {
+    	b: {
+    		enumerable: true,
+    		value: 213,
+    	},
+    	d: {
+    		value: 123
+    	}
+    })
+    
+    for(let k in a) {
+    	console.log(a[k]);
+    }
 
 
-#### call apply
+#### call apply bind
 	他们是改变方法内部this指向的方法。
-	call 和 apply 的第一个参数都是一个对象,
+	call 和 apply 的第一个参数都是一个对象,传递以后该方法指向这个对象;
 	call (obj1, arguments) // 第二个值是参数。
 	apply (obj1, [arguments]) // 第二个参数是数组，可以传arguments; // 大公司用这个方法多
+	bind 和 call传参一致， 不过不会立即执行。
 
 ### 继承
 
@@ -1546,6 +1562,7 @@ typeof 可以打印出多少结果
     str.split(',', 1) // ["1"]
     join 就像 split 的克星，或者说他们相互克制，一个把数组转化成特定的字符串， 一个把特定字符串转化成数组;
 
+
 ## 类数组 Array-like
     一般出现在function 的 arguments中。 是一个对象，但是这个对象有着数组一样的结构，有length属性，有私有的方法;
     类数组的原型指向的是Object，也就是说像push，unshift, splice等数组的方法都无法使用(可以自定义);
@@ -1608,6 +1625,19 @@ typeof 可以打印出多少结果
         }
     }
 
+
+
+
+
+
+
+
+## String
+### toLowerCase
+
+### toUpperCase
+
+
 ## 错误信息
     浏览器报错
 ### 错误信息类型
@@ -1626,3 +1656,19 @@ typeof 可以打印出多少结果
     
     为啥用字符串表示呢？
     因为字符串不会报错，用其他的容易报错；
+
+## ECMAScript 内部对象
+    本地对象和内置对象都是ES的内部对象
+### JS 本地对象 Native Object
+    Object Function Array String Boolean Number
+    Error EvalError SyntaxError RangeError
+    ReferenceError TypeError URIError
+    Date RegExp
+
+### JS 内置对象  Built-in Object
+    Global Math
+    Global是一个虚拟对象无法打印出来的，他上面有 isNaN() parseInt() Number decodeURI 等方法。
+    Infinity NaN undefined 都是 他下面的属性
+
+### 宿主对象 Host Object
+    执行JS脚本的环境提供的对象， 浏览器对象, 兼容性问题!!! DOM的难题。

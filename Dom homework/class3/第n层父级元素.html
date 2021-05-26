@@ -1,0 +1,39 @@
+<DOCTYPE html>
+<html>
+	<head>
+		<meta charset="uft-8">
+		<title>document</title>
+	</head>
+	<body>
+		<div class="div1">
+			<p>
+				<span>
+					 <a href=""></a>
+				</span>
+			</p>
+		</div>
+		<script type="text/javascript">
+			var div1 = document.getElementsByTagName('a')[0];
+
+			HTMLElement.prototype.getParent = function () {
+				return this.parentElement;
+			}
+
+			function getParentFromDomTree (elem, n) {
+				var i = 0,
+					nowElem = null;
+				while (i <= n) {
+					if (!nowElem) {
+						nowElem = elem.getParent();
+					} else {
+						nowElem = nowElem.getParent();
+					}
+					i++;
+				}
+				return nowElem;
+			}
+
+			console.log(getParentFromDomTree(div1, 1))
+		</script>
+	</body>
+</html>
