@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style type="text/css">
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+        }
+        .box::after {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+            background-color: red;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="box"></div>
+    <script type="text/javascript">
+        
+        const div = document.getElementsByTagName('div')[0];
+
+        /**
+         * 代替offsetWidth / offsetHeight 兼容方法。
+         * 
+        */
+        function getComputStyle (elem, prop, pseudo) {
+            var pseudo = pseudo || null;
+            if (window.getComputedStyle) {
+                console.log(prop)
+                if (prop) {
+                    return window.getComputedStyle(elem, pseudo)[prop];
+                } else {
+                    return window.getComputedStyle(elem, pseudo);
+                }
+            } else {
+                if (prop) {
+                    return elem.currentStyle(prop);
+                } else {
+                    return elem.currentStyle();
+                }
+            }
+        }
+
+        console.log(getComputStyle(div, 'width'));
+    </script>
+</body>
+</html>

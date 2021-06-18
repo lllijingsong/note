@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.box {
+			width: 3000px;
+			overflow: auto;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+		<br>
+	</div>
+	<script>
+	/**
+		查看滚动条距离，
+		IE9及以下没有 window.pageXOffset;
+	*/
+
+		function getScrollOffset () {
+			if (window.pageXOffset) {
+				return {
+					left: window.pageXOffset,
+					top: window.pageYOffset
+				}
+			} else {
+				return {
+					left: document.body.scrollLeft + document.documentElement.scrollLeft,
+					top: document.body.scrollTop + document.documentElement.scrollTop
+				}				
+			}
+		}
+
+		console.log(getScrollOffset());
+	</script>
+</body>
+</html>

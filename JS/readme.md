@@ -1634,9 +1634,10 @@ typeof 可以打印出多少结果
 
 ## String
 ### toLowerCase
+    给传入的字符串变成小写
 
 ### toUpperCase
-
+    给传入的字符串变成大写
 
 ## 错误信息
     浏览器报错

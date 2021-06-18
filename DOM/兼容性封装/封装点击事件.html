@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button class="btn"> 领取优惠券 </button>
+    <script type="text/javascript">
+        var oBtn = document.getElementsByTagName('button')[0];
+
+        addEventFunction(oBtn, 'click', () => {
+            console.log(123);
+        });
+
+        function addEventFunction (el, type, fn) {
+            if (false && el.addEventListener) {
+                el.addEventListener(type, fn, false);
+            } else if (el.attachEvent) {
+                el.attachEvent('on' + type, function () {
+                    fn.call(el);
+                })
+            } else {
+                el['on' + type] = fn;
+            }
+        }
+
+    </script>
+</body>
+</html>

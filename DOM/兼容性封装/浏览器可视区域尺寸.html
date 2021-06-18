@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div style="width: 5000px; height: 300px"></div>
+	<script type="text/javascript">
+		function getViewPorSize() {
+			if (window.innerWidth) {
+				return {
+					width: window.innerWidth,
+					height: window.innerHeight
+				}
+			} else {
+				if (document.compatMode === 'BackCompat') {
+					return {
+						width: document.body.clientWidth,
+						height: document.body.clientHeight
+					}
+				} else {
+					return {
+						width: document.documentElement.clientWidth,
+						height: document.documentElement.clientHeight
+					}
+
+				}
+			}
+		}
+	</script>
+</body>
+</html>

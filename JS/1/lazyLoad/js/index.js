@@ -23,6 +23,8 @@
         var H = lazyBody.clientHeight;//获取可视区域高度
         var S = lazyBody.scrollTop;
 
+        console.log(H, S)
+
         for (var i = 0; i < imgs.length; i++) {
             if (H + S > getTop(imgs[i]) && !imgs[i]['src']) {
                 imgs[i].src = imgs[i].getAttribute('data-src');

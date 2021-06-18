@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/common.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+</head>
+<body>
+    <div class="wrap">
+        <div class="list-hd">
+            <h1>to do list</h1>
+            <!-- j-show-input 前面加了 j 表示JS会调用，一般前端极少写id -->
+            <a href="javascript:;"  class="j-show-input hd-icon"></a>
+        </div>
+        <div class="input-wrap">
+            <div class="input-bd">
+                <input type="text" id="textInput" placeholder="请输入信息">
+            </div>
+            <div class="btn-bd">
+                <button class="j-add-item">增加项目</button>
+            </div>
+        </div>
+        <div class="list-wrap">
+            <ul class="j-list list">
+                <li class="item">
+                    <p class="item-content"> 12321323 </p>
+                    <div class="btn-group">
+                        <a href="javascript:;" class="item-icon item-edit"></a>
+                        <a href="javascript:;" class="item-icon item-del"></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/utils.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+</body>
+</html>

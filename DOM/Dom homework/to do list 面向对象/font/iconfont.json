@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7549346",
+      "name": "关闭",
+      "font_class": "RectangleCopy",
+      "unicode": "e6a1",
+      "unicode_decimal": 59041
+    },
+    {
+      "icon_id": "7549367",
+      "name": "加",
+      "font_class": "RectangleCopy1",
+      "unicode": "e6a5",
+      "unicode_decimal": 59045
+    },
+    {
+      "icon_id": "7549817",
+      "name": "单据",
+      "font_class": "RectangleCopy2",
+      "unicode": "e6a7",
+      "unicode_decimal": 59047
+    }
+  ]
+}
